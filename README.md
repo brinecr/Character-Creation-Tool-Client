@@ -59,11 +59,12 @@ TBD
 ---
 ### ERD (entity relationship diagram)
 
-![](public/wireframeErd/erd.png)
+![](public/Monster_Fighter_Simulator_ERD.png)
 
 #### Wireframe:
-![](public/wireframeErd/landing.png)
-![](public/wireframeErd/signup.png)
-![](public/wireframeErd/changePw.png)
-![](public/wireframeErd/changeUsername.png)
-![](public/wireframeErd/chat.png)
+![](public/mfs-landing-page.png)
+![](public/mfs-signed-in-page.png)
+![](public/mfs-create-character.png)
+![](public/mfs-pick-a-character.png)
+![](public/mfs-character-graveyard.png)
+![](public/mfs-battle.png)
