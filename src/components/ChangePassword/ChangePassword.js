@@ -70,7 +70,7 @@ class ChangePassword extends Component {
                 value={newPassword}
                 type="password"
                 placeholder="New Password"
-                onChange={this.handleChange}
+                onChange={this.handleChange}git pu
               />
             </Form.Group>
             <Button
