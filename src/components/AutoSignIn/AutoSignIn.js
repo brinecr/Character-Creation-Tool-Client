@@ -22,7 +22,7 @@ class AutoSignIn extends Component {
     const { msgAlerts, history, setUser } = this.props
 
     signIn(this.state)
-      .then(res => setUser(res.data.user))
+      .then(res => setUser(res.data))
       .then(() => msgAlerts({
         heading: 'Auto Sign In Success',
         message: messages.signInSuccess,
