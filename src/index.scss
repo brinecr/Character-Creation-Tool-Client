@@ -1,1 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
+
+$text-color: #fff;
+
+
+body {
+  background-image: url('./monsterfight.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.sign-up-form {
+  color: $text-color;
+}
+
+.sign-in-form {
+  color: $text-color;
+}
+
+.change-password-form {
+  color: $text-color;
+}
