@@ -1,12 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
 $text-color: #fff;
+$background-color: #000;
 
 
 body {
+  background-color: $background-color;
   background-image: url('./monsterfight.jpg');
-  background-size: 100%;
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .sign-up-form {
