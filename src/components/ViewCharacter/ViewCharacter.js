@@ -6,7 +6,7 @@ import messages from '../AutoDismissAlert/messages'
 
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 class ViewCharacter extends Component {
   constructor (props) {
@@ -83,9 +83,9 @@ class ViewCharacter extends Component {
     return (
       <div className="row view-characters">
         <div>
-          <CardGroup>
+          <CardDeck>
             {characters.map(character => (
-              <Card key={character.id} style={{ width: '20rem' }}>
+              <Card className="mt-5" key={character.id} style={{ width: '20rem' }}>
                 <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
                 <Card.Body>
                   <Card.Title><h3>{character.name}</h3></Card.Title>
@@ -129,7 +129,7 @@ class ViewCharacter extends Component {
                 </Card.Body>
               </Card>
             ))}
-          </CardGroup>
+          </CardDeck>
         </div>
       </div>
     )

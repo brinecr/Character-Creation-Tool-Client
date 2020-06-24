@@ -10,6 +10,6 @@ export default {
   createCharacterFailure: 'Failed to create character. Please verify name chosen is not already in use.',
   deleteCharacterSuccess: 'Character deleted successfully!',
   deleteCharacterFailure: 'Failed to delete character.',
-  reviveCharacterSuccess: 'Character revived successfully! Character is now set back to 10 Hit Points',
+  reviveCharacterSuccess: 'Character healed successfully! Character is now set back to 10 Hit Points and is no longer dead if they were!',
   reviveCharacterFailure: 'Failed to revive character.'
 }

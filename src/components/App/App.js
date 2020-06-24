@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -22,6 +22,7 @@ import Orc from '../monsters/orc'
 import Beholder from '../monsters/beholder'
 import HK47 from '../monsters/hk-47'
 import Badger from '../monsters/badger'
+import Sandworm from '../monsters/sandworm'
 
 class App extends Component {
   constructor () {
@@ -86,7 +87,7 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/battle' render={() => (
             <Battle msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/monsters' component={() => (<CardGroup><Goblin/><Orc/><HK47/><Badger/><Beholder/></CardGroup>)} />
+          <AuthenticatedRoute exact user={user} path='/monsters' component={() => (<CardDeck><Goblin/><Orc/><HK47/><Badger/><Beholder/><Sandworm/></CardDeck>)} />
         </main>
       </Fragment>
     )

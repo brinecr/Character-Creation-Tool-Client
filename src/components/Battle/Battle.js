@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { createCharacter } from '../../api/character'
+import { deleteCharacter, healCharacter, getCharacters } from '../../api/character'
 import messages from '../AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
+import Goblin from '../monsters/goblin'
+
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 class Battle extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      name: '',
-      description: ''
+      characters: []
     }
   }
 
@@ -21,64 +23,117 @@ class Battle extends Component {
     [event.target.name]: event.target.value
   })
 
-  onCreateCharacter = event => {
+  routeChange = event => {
+    const { history } = this.props
+    history.push('/battle')
+  }
+
+  onDeleteCharacter = event => {
     const { msgAlert, user } = this.props
-    createCharacter(this.state, user)
-      .then((res) => this.props.setUser(res.data))
+    const id = event.target.id
+    deleteCharacter(id, user)
       .then(() => msgAlert({
-        heading: 'Create Success',
-        message: messages.createCharacterSuccess,
+        heading: 'Delete Character Success!',
+        message: messages.deleteCharacterSuccess,
         variant: 'success'
       }))
+      .then(() => this.componentDidMount())
       .catch(error => {
-        this.setState({
-          name: '',
-          description: ''
-        })
         msgAlert({
-          heading: 'Create Failed with error: ' + error.message,
-          message: messages.createCharacterFailure,
+          heading: 'Delete Failed with error: ' + error.message,
+          message: messages.deleteCharacterFailure,
           variant: 'danger'
         })
       })
   }
 
-  render () {
-    const { name, description } = this.state
+  onHealCharacter = event => {
+    const { msgAlert, user } = this.props
+    const id = event.target.id
+    const description = event.target.getAttribute('data')
+    const name = event.target.name
+    console.log(event.target)
+    console.log(description)
+    console.log(name)
+    healCharacter(id, user, name, description)
+      .then(() => msgAlert({
+        heading: 'Revive Character Success!',
+        message: messages.reviveCharacterSuccess,
+        variant: 'success'
+      }))
+      .then(() => this.componentDidMount())
+      .catch(error => {
+        msgAlert({
+          heading: 'Revive Character Failed with error: ' + error.message,
+          message: messages.reviveCharacterFailure,
+          variant: 'danger'
+        })
+      })
+  }
 
+  componentDidMount () {
+    getCharacters(this.props.user)
+      .then(res => {
+        console.log(res)
+        this.setState({ characters: res.data })
+      })
+      .catch(console.error)
+  }
+
+  render () {
+    const { characters } = this.state
     return (
-      <div className="row sign-in-form">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Create a New Character</h3>
-          <Form onSubmit={this.onCreateCharacter}>
-            <Form.Group controlId="name">
-              <Form.Label>Character Name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="name"
-                value={name}
-                placeholder="Enter Character Name"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="description">
-              <Form.Label>Description/Quote</Form.Label>
-              <Form.Control
-                name="description"
-                value={description}
-                type="text"
-                placeholder="Enter Character Description"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Button
-              variant="dark"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
+      <div className="row view-characters">
+        <div>
+          <CardDeck>
+            {characters.map(character => (
+              <Card className="mt-5" key={character.id} style={{ width: '20rem' }}>
+                <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
+                <Card.Body>
+                  <Card.Title><h3>{character.name}</h3></Card.Title>
+                  <Card.Text>
+                    Description: {character.description}
+                  </Card.Text>
+                  <Card.Text>
+                    Hit Points: {character.hit_points}
+                  </Card.Text>
+                  <Card.Text>
+                    Attack Power: {character.attack_power}
+                  </Card.Text>
+                  <Card.Text>
+                    {character.dead ? 'Dead' : 'Not Dead'}
+                  </Card.Text>
+                  <Card.Text>
+                    Monsters Killed: {character.monsters_killed}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+            <Card className= "h-100 ml-2 mt-5" style={{ width: '15rem' }}>
+              <Card.Img src="https://image.freepik.com/free-vector/versus-vs-logo-battle-headline-template-sparkling-lightning-design_159025-56.jpg" alt="Card image" />
+              <Card.ImgOverlay>
+                <Button
+                  className="col-6"
+                  variant="dark"
+                  id={characters.id}
+                  name={characters.name}
+                  data={characters.description}
+                  onClick={this.onHealCharacter}>
+                  Attack
+                </Button>
+                <Button
+                  className="col-6"
+                  variant="danger"
+                  id={characters.id}
+                  name={characters.name}
+                  data={characters.description}
+                  onClick={this.onHealCharacter}>
+                  Give Up
+                </Button>
+              </Card.ImgOverlay>
+            </Card>
+            <Goblin/>
+          </CardDeck>
         </div>
       </div>
     )

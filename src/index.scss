@@ -13,7 +13,9 @@ body {
   background-color: $background-color;
   background-image: url('./#{$nth}.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  background-position: top;
+
 }
 
 .navBar {
@@ -51,6 +53,13 @@ body {
 
 .card-img-top {
   height: 250px;
+  object-fit: cover;
+  object-position: 50%  0%;
+  width: 100%;
+}
+
+.card-img-overlay {
+  height: 100%;
   object-fit: cover;
   object-position: 50%  0%;
   width: 100%;
