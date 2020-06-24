@@ -23,25 +23,44 @@ export const createCharacter = (credentials, user) => {
 }
 
 // Update Character
-export const updateCharacter = (credentials, user) => {
+// export const updateCharacter = (credentials, user) => {
+//   return axios({
+//     url: apiUrl + 'characters/' + user._id,
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': `Token ${user.token}`
+//     },
+//     data: {
+//       character: {
+//         hit_points: 10
+//       }
+//     }
+//   })
+// }
+
+// Heal Character
+export const healCharacter = (characterid, user, name, description) => {
   return axios({
-    url: apiUrl + 'characters/' + user._id,
+    url: apiUrl + 'characters/' + characterid + '/',
     method: 'PATCH',
     headers: {
       'Authorization': `Token ${user.token}`
     },
     data: {
       character: {
-        hit_points: 10
+        hit_points: 10,
+        dead: false,
+        name: name,
+        description: description
       }
     }
   })
 }
 
 // Delete Character
-export const deleteCharacter = user => {
+export const deleteCharacter = (characterid, user) => {
   return axios({
-    url: apiUrl + 'characters/' + user._id,
+    url: apiUrl + 'characters/' + characterid,
     method: 'DELETE',
     headers: {
       'Authorization': `Token ${user.token}`
@@ -49,10 +68,24 @@ export const deleteCharacter = user => {
   })
 }
 
-// Get Character
-export const getCharacter = user => {
+// Get Characters
+export const getCharacters = user => {
   return axios({
-    url: apiUrl + 'characters/' + user._id,
-    method: 'GET'
+    url: apiUrl + 'characters/',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
+
+// Get Character
+export const getCharacter = (character, user) => {
+  return axios({
+    url: apiUrl + 'characters/' + character._id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
   })
 }

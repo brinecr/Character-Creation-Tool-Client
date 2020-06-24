@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { deleteCharacter, updateCharacter } from '../../api/character'
+import { deleteCharacter, healCharacter, getCharacters } from '../../api/character'
 import messages from '../AutoDismissAlert/messages'
 
 import Button from 'react-bootstrap/Button'
@@ -13,8 +13,7 @@ class ViewCharacter extends Component {
     super(props)
 
     this.state = {
-      name: '',
-      description: ''
+      characters: []
     }
   }
 
@@ -22,19 +21,22 @@ class ViewCharacter extends Component {
     [event.target.name]: event.target.value
   })
 
+  routeChange = event => {
+    const { history } = this.props
+    history.push('/battle')
+  }
+
   onDeleteCharacter = event => {
     const { msgAlert, user } = this.props
-    deleteCharacter(this.state, user)
+    const id = event.target.id
+    deleteCharacter(id, user)
       .then(() => msgAlert({
         heading: 'Delete Character Success!',
         message: messages.deleteCharacterSuccess,
         variant: 'success'
       }))
+      .then(() => this.componentDidMount())
       .catch(error => {
-        this.setState({
-          name: '',
-          description: ''
-        })
         msgAlert({
           heading: 'Delete Failed with error: ' + error.message,
           message: messages.deleteCharacterFailure,
@@ -43,19 +45,22 @@ class ViewCharacter extends Component {
       })
   }
 
-  onReviveCharacter = event => {
+  onHealCharacter = event => {
     const { msgAlert, user } = this.props
-    updateCharacter(this.state, user)
+    const id = event.target.id
+    const description = event.target.getAttribute('data')
+    const name = event.target.name
+    console.log(event.target)
+    console.log(description)
+    console.log(name)
+    healCharacter(id, user, name, description)
       .then(() => msgAlert({
         heading: 'Revive Character Success!',
         message: messages.reviveCharacterSuccess,
         variant: 'success'
       }))
+      .then(() => this.componentDidMount())
       .catch(error => {
-        this.setState({
-          name: '',
-          description: ''
-        })
         msgAlert({
           heading: 'Revive Character Failed with error: ' + error.message,
           message: messages.reviveCharacterFailure,
@@ -64,47 +69,66 @@ class ViewCharacter extends Component {
       })
   }
 
+  componentDidMount () {
+    getCharacters(this.props.user)
+      .then(res => {
+        console.log(res)
+        this.setState({ characters: res.data })
+      })
+      .catch(console.error)
+  }
+
   render () {
+    const { characters } = this.state
     return (
       <div className="row view-characters">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+        <div>
           <CardGroup>
-            <Card style={{ width: '20rem' }}>
-              <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
-              <Card.Body>
-                <Card.Title>Character Name</Card.Title>
-                <Card.Text>
-                  Description:
-                </Card.Text>
-                <Card.Text>
-                  Hit Points:
-                </Card.Text>
-                <Card.Text>
-                  Attack Power:
-                </Card.Text>
-                <Card.Text>
-                  Is Dead?
-                </Card.Text>
-                <Button
-                  className="col-3"
-                  variant="dark"
-                  onClick={this.onBattle}>
-                  Battle
-                </Button>
-                <Button
-                  className="col-3"
-                  variant="light"
-                  onClick={this.onReviveCharacter}>
-                  Revive
-                </Button>
-                <Button
-                  className="col-3"
-                  variant="danger"
-                  onClick={this.onDeleteCharacter}>
-                  Delete
-                </Button>
-              </Card.Body>
-            </Card>
+            {characters.map(character => (
+              <Card key={character.id} style={{ width: '20rem' }}>
+                <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
+                <Card.Body>
+                  <Card.Title><h3>{character.name}</h3></Card.Title>
+                  <Card.Text>
+                    Description: {character.description}
+                  </Card.Text>
+                  <Card.Text>
+                    Hit Points: {character.hit_points}
+                  </Card.Text>
+                  <Card.Text>
+                    Attack Power: {character.attack_power}
+                  </Card.Text>
+                  <Card.Text>
+                    {character.dead ? 'Dead' : 'Not Dead'}
+                  </Card.Text>
+                  <Card.Text>
+                    Monsters Killed: {character.monsters_killed}
+                  </Card.Text>
+                  <Button
+                    className="col-4"
+                    variant="dark"
+                    onClick={this.routeChange}>
+                    Battle
+                  </Button>
+                  <Button
+                    className="col-4"
+                    variant="light"
+                    id={character.id}
+                    name={character.name}
+                    data={character.description}
+                    onClick={this.onHealCharacter}>
+                    Heal
+                  </Button>
+                  <Button
+                    className="col-4"
+                    id={character.id}
+                    variant="danger"
+                    onClick={this.onDeleteCharacter}>
+                    Delete
+                  </Button>
+                </Card.Body>
+              </Card>
+            ))}
           </CardGroup>
         </div>
       </div>
