@@ -4,15 +4,15 @@ import { withRouter } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
-import { Nav } from 'react-bootstrap'
+import { Nav, Button } from 'react-bootstrap'
 
 class AutoSignIn extends Component {
   constructor () {
     super()
 
     this.state = {
-      email: 'colin@colin.com',
-      password: 'password123'
+      email: 'fighter@ofmonsters.com',
+      password: 'diemonsterdie123'
     }
   }
 
@@ -43,7 +43,7 @@ class AutoSignIn extends Component {
     return (
       <Fragment>
         <Nav.Link href="#" onClick={this.onSignIn}>
-            Auto Sign In
+          {<Button variant="dark" size="sm" >Auto Sign In</Button>}
         </Nav.Link>
       </Fragment>
     )

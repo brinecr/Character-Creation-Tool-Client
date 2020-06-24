@@ -50,8 +50,8 @@ class SignIn extends Component {
     return (
       <div className="row sign-in-form">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign In to an Existing Account</h3>
-          <Form onSubmit={this.onSignIn}>
+          <h3 className="char-form form-title">Sign In to an Existing Account</h3>
+          <Form className="char-form" onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control

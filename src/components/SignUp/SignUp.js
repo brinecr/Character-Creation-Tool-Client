@@ -29,7 +29,7 @@ class SignUp extends Component {
 
     signUp(this.state)
       .then(() => signIn(this.state))
-      .then(res => setUser(res.data.user))
+      .then(res => setUser(res.data))
       .then(() => msgAlert({
         heading: 'Sign Up Success',
         message: messages.signUpSuccess,
@@ -52,8 +52,8 @@ class SignUp extends Component {
     return (
       <div className="row sign-up-form">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign Up for an Account</h3>
-          <Form onSubmit={this.onSignUp}>
+          <h3 className="char-form form-title">Sign Up for an Account</h3>
+          <Form className="char-form" onSubmit={this.onSignUp}>
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control

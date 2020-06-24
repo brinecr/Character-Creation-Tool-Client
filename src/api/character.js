@@ -5,9 +5,9 @@ export const createCharacter = (credentials, user) => {
   return axios({
     method: 'POST',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Token ${user.token}`
     },
-    url: apiUrl + '/character',
+    url: apiUrl + 'characters/',
     data: {
       user: {
         _id: credentials._id,
@@ -24,10 +24,10 @@ export const createCharacter = (credentials, user) => {
 }
 export const updateCharacter = (credentials, user) => {
   return axios({
-    url: apiUrl + '/character/' + user._id,
+    url: apiUrl + 'characters/' + user._id,
     method: 'PATCH',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Token ${user.token}`
     },
     data: {
       user: {
@@ -45,16 +45,16 @@ export const updateCharacter = (credentials, user) => {
 }
 export const deleteCharacter = user => {
   return axios({
-    url: apiUrl + '/character/' + user._id,
+    url: apiUrl + 'characters/' + user._id,
     method: 'DELETE',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Token ${user.token}`
     }
   })
 }
 export const getCharacter = user => {
   return axios({
-    url: apiUrl + '/character/' + user._id,
+    url: apiUrl + 'characters/' + user._id,
     method: 'GET'
   })
 }

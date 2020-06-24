@@ -3,12 +3,26 @@
 $text-color: #fff;
 $background-color: #000;
 
+$img-key: random(6);
+
+$list: chain, monsterfight, fantasy, fight, plate, gladiator;
+$nth: nth($list, $img-key);
+
 
 body {
   background-color: $background-color;
-  background-image: url('./monsterfight.jpg');
+  background-image: url('./#{$nth}.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.navBar {
+  background-image: url('./ghost-tile.jpg');
+  background-repeat: repeat;
+}
+
+.navbar-text {
+  color: $text-color;
 }
 
 .sign-up-form {
@@ -21,4 +35,21 @@ body {
 
 .change-password-form {
   color: $text-color;
+}
+
+.view-characters {
+  color: $text-color;
+}
+
+.card-body {
+  background-color: $background-color;
+}
+
+.char-form {
+  background-color: transparentize($background-color, 0.5);
+  border: 1px solid $text-color;
+}
+
+.form-title {
+  text-align: center;
 }

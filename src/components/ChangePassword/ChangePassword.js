@@ -49,8 +49,8 @@ class ChangePassword extends Component {
     return (
       <div className="row change-password-form">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Change Password on your Account</h3>
-          <Form onSubmit={this.onChangePassword}>
+          <h3 className="char-form form-title">Change Password on your Account</h3>
+          <Form className="char-form" onSubmit={this.onChangePassword}>
             <Form.Group controlId="oldPassword">
               <Form.Label>Old password</Form.Label>
               <Form.Control

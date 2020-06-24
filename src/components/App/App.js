@@ -9,6 +9,13 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
+import CreateCharacter from '../CreateCharacter/CreateCharacter'
+import ViewCharacter from '../ViewCharacter/ViewCharacter'
+import UpdateCharacter from '../UpdateCharacter/UpdateCharacter'
+import DeleteCharacter from '../DeleteCharacter/DeleteCharacter'
+
+import Battle from '../Battle/Battle'
+
 class App extends Component {
   constructor () {
     super()
@@ -56,6 +63,21 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/create-character' render={() => (
+            <CreateCharacter msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/view-character' render={() => (
+            <ViewCharacter msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/update-character' render={() => (
+            <UpdateCharacter msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/delete-character' render={() => (
+            <DeleteCharacter msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/battle' render={() => (
+            <Battle msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

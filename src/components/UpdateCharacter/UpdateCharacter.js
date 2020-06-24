@@ -7,7 +7,7 @@ import messages from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class CreateCharacter extends Component {
+class UpdateCharacter extends Component {
   constructor (props) {
     super(props)
 
@@ -49,8 +49,8 @@ class CreateCharacter extends Component {
     return (
       <div className="row sign-in-form">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3 className="char-form form-title">Create a New Character</h3>
-          <Form className="char-form" onSubmit={this.onCreateCharacter}>
+          <h3>Create a New Character</h3>
+          <Form onSubmit={this.onCreateCharacter}>
             <Form.Group controlId="name">
               <Form.Label>Character Name</Form.Label>
               <Form.Control
@@ -72,7 +72,6 @@ class CreateCharacter extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <p>New Characters always start with 10 Hit Points and 4 Attack Power</p>
             <Button
               variant="dark"
               type="submit"
@@ -86,4 +85,4 @@ class CreateCharacter extends Component {
   }
 }
 
-export default withRouter(CreateCharacter)
+export default withRouter(UpdateCharacter)
