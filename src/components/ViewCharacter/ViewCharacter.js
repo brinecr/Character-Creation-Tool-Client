@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { createCharacter } from '../../api/character'
+import { deleteCharacter, updateCharacter } from '../../api/character'
 import messages from '../AutoDismissAlert/messages'
 
 import Button from 'react-bootstrap/Button'
@@ -22,13 +22,12 @@ class ViewCharacter extends Component {
     [event.target.name]: event.target.value
   })
 
-  onCreateCharacter = event => {
+  onDeleteCharacter = event => {
     const { msgAlert, user } = this.props
-    createCharacter(this.state, user)
-      .then((res) => this.props.setUser(res.data))
+    deleteCharacter(this.state, user)
       .then(() => msgAlert({
-        heading: 'Create Success',
-        message: messages.createCharacterSuccess,
+        heading: 'Delete Character Success!',
+        message: messages.deleteCharacterSuccess,
         variant: 'success'
       }))
       .catch(error => {
@@ -37,8 +36,29 @@ class ViewCharacter extends Component {
           description: ''
         })
         msgAlert({
-          heading: 'Create Failed with error: ' + error.message,
-          message: messages.createCharacterFailure,
+          heading: 'Delete Failed with error: ' + error.message,
+          message: messages.deleteCharacterFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
+  onReviveCharacter = event => {
+    const { msgAlert, user } = this.props
+    updateCharacter(this.state, user)
+      .then(() => msgAlert({
+        heading: 'Revive Character Success!',
+        message: messages.reviveCharacterSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.setState({
+          name: '',
+          description: ''
+        })
+        msgAlert({
+          heading: 'Revive Character Failed with error: ' + error.message,
+          message: messages.reviveCharacterFailure,
           variant: 'danger'
         })
       })
@@ -73,62 +93,14 @@ class ViewCharacter extends Component {
                 </Button>
                 <Button
                   className="col-3"
-                  variant="danger"
-                  onClick={this.onRevive}>
+                  variant="light"
+                  onClick={this.onReviveCharacter}>
                   Revive
                 </Button>
                 <Button
                   className="col-3"
-                  variant="light"
-                  onClick={this.onUpdate}>
-                  Update
-                </Button>
-                <Button
-                  className="col-3"
                   variant="danger"
-                  onClick={this.onDelete}>
-                  Delete
-                </Button>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: '20rem' }}>
-              <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
-              <Card.Body>
-                <Card.Title>Character Name</Card.Title>
-                <Card.Text>
-                  Description:
-                </Card.Text>
-                <Card.Text>
-                  Hit Points:
-                </Card.Text>
-                <Card.Text>
-                  Attack Power:
-                </Card.Text>
-                <Card.Text>
-                  Is Dead?
-                </Card.Text>
-                <Button
-                  className="col-3"
-                  variant="dark"
-                  onClick={this.onBattle}>
-                  Battle
-                </Button>
-                <Button
-                  className="col-3"
-                  variant="danger"
-                  onClick={this.onRevive}>
-                  Revive
-                </Button>
-                <Button
-                  className="col-3"
-                  variant="light"
-                  onClick={this.onUpdate}>
-                  Update
-                </Button>
-                <Button
-                  className="col-3"
-                  variant="danger"
-                  onClick={this.onDelete}>
+                  onClick={this.onDeleteCharacter}>
                   Delete
                 </Button>
               </Card.Body>

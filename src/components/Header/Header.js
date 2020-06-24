@@ -8,6 +8,7 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#create-character">{<Button variant="success" size="sm">Create Character</Button>}</Nav.Link>
     <Nav.Link href="#view-character">{<Button variant="secondary" size="sm" >Your Characters</Button>}</Nav.Link>
+    <Nav.Link href="#monsters">{<Button variant="danger" size="sm" >Monsters</Button>}</Nav.Link>
     <Nav.Link href="#change-password">{<Button variant="dark" size="sm" >Change Password</Button>}</Nav.Link>
     <Nav.Link href="#sign-out">{<Button variant="dark" size="sm" >Sign Out</Button>}</Nav.Link>
   </Fragment>

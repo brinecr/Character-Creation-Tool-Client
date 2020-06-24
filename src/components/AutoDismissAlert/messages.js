@@ -7,5 +7,9 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createCharacterSuccess: 'Character created successfully!',
-  createCharacterFailure: 'Failed to create character. Please verify name chosen is not already in use.'
+  createCharacterFailure: 'Failed to create character. Please verify name chosen is not already in use.',
+  deleteCharacterSuccess: 'Character deleted successfully!',
+  deleteCharacterFailure: 'Failed to delete character.',
+  reviveCharacterSuccess: 'Character revived successfully! Character is now set back to 10 Hit Points',
+  reviveCharacterFailure: 'Failed to revive character.'
 }

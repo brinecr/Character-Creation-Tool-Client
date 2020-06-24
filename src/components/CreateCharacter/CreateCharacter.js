@@ -22,14 +22,15 @@ class CreateCharacter extends Component {
   })
 
   onCreateCharacter = event => {
-    const { msgAlert, user } = this.props
+    event.preventDefault()
+    const { msgAlert, user, history } = this.props
     createCharacter(this.state, user)
-      .then((res) => this.props.setUser(res.data))
       .then(() => msgAlert({
         heading: 'Create Success',
         message: messages.createCharacterSuccess,
         variant: 'success'
       }))
+      .then(() => history.push('/view-character'))
       .catch(error => {
         this.setState({
           name: '',
@@ -63,7 +64,7 @@ class CreateCharacter extends Component {
               />
             </Form.Group>
             <Form.Group controlId="description">
-              <Form.Label>Description/Quote</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 name="description"
                 value={description}

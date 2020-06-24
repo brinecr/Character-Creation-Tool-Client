@@ -45,6 +45,17 @@ body {
   background-color: $background-color;
 }
 
+.card-columns {
+  column-count: 4;
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+  object-position: 50%  0%;
+  width: 100%;
+}
+
 .char-form {
   background-color: transparentize($background-color, 0.5);
   border: 1px solid $text-color;

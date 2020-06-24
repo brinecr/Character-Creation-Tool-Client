@@ -1,6 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// Create Character
 export const createCharacter = (credentials, user) => {
   return axios({
     method: 'POST',
@@ -9,19 +10,19 @@ export const createCharacter = (credentials, user) => {
     },
     url: apiUrl + 'characters/',
     data: {
-      user: {
+      character: {
         _id: credentials._id,
-        character: {
-          about: credentials.about,
-          avatarUrl: credentials.avatarUrl,
-          quote: credentials.quote,
-          rank: credentials.rank,
-          website: credentials.website
-        }
+        name: credentials.name,
+        description: credentials.description,
+        hit_points: credentials.hit_points,
+        attack_power: credentials.attack_power,
+        dead: credentials.dead
       }
     }
   })
 }
+
+// Update Character
 export const updateCharacter = (credentials, user) => {
   return axios({
     url: apiUrl + 'characters/' + user._id,
@@ -30,19 +31,14 @@ export const updateCharacter = (credentials, user) => {
       'Authorization': `Token ${user.token}`
     },
     data: {
-      user: {
-        _id: credentials._id,
-        character: {
-          about: credentials.about,
-          avatarUrl: credentials.avatarUrl,
-          quote: credentials.quote,
-          rank: credentials.rank,
-          website: credentials.website
-        }
+      character: {
+        hit_points: 10
       }
     }
   })
 }
+
+// Delete Character
 export const deleteCharacter = user => {
   return axios({
     url: apiUrl + 'characters/' + user._id,
@@ -52,6 +48,8 @@ export const deleteCharacter = user => {
     }
   })
 }
+
+// Get Character
 export const getCharacter = user => {
   return axios({
     url: apiUrl + 'characters/' + user._id,
