@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { deleteCharacter, healCharacter, hurtCharacter, killCharacter, getCharacters } from '../../api/character'
+import { deleteCharacter, healCharacter, killCharacter, getCharacters } from '../../api/character'
 import messages from '../AutoDismissAlert/messages'
 
 import Button from 'react-bootstrap/Button'
@@ -66,26 +66,26 @@ class ViewCharacter extends Component {
       })
   }
 
-  onHurtCharacter = event => {
-    const { msgAlert, user } = this.props
-    const id = event.target.id
-    const description = event.target.getAttribute('data')
-    const name = event.target.name
-    hurtCharacter(id, user, name, description)
-      .then(() => msgAlert({
-        heading: 'Hurt Character Success!',
-        message: messages.hurtCharacterSuccess,
-        variant: 'success'
-      }))
-      .then(() => this.componentDidMount())
-      .catch(error => {
-        msgAlert({
-          heading: 'Hurt Character Failed with error: ' + error.message,
-          message: messages.hurtCharacterFailure,
-          variant: 'danger'
-        })
-      })
-  }
+  // onHurtCharacter = event => {
+  //   const { msgAlert, user } = this.props
+  //   const id = event.target.id
+  //   const description = event.target.getAttribute('data')
+  //   const name = event.target.name
+  //   hurtCharacter(id, user, name, description)
+  //     .then(() => msgAlert({
+  //       heading: 'Hurt Character Success!',
+  //       message: messages.hurtCharacterSuccess,
+  //       variant: 'success'
+  //     }))
+  //     .then(() => this.componentDidMount())
+  //     .catch(error => {
+  //       msgAlert({
+  //         heading: 'Hurt Character Failed with error: ' + error.message,
+  //         message: messages.hurtCharacterFailure,
+  //         variant: 'danger'
+  //       })
+  //     })
+  // }
 
   onKillCharacter = event => {
     const { msgAlert, user } = this.props
@@ -114,11 +114,11 @@ class ViewCharacter extends Component {
       .then(res => {
         this.setState({ characters: res.data })
       })
-      // .then(() => msgAlert({
-      //   heading: 'View Characters Success!',
-      //   message: messages.viewCharacterSuccess,
-      //   variant: 'info'
-      // }))
+      .then(() => msgAlert({
+        heading: 'View Characters Success!',
+        message: messages.viewCharacterSuccess,
+        variant: 'info'
+      }))
       .catch(error => {
         msgAlert({
           heading: 'View Characters Failed with error: ' + error.message,

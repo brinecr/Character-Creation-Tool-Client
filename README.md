@@ -9,8 +9,8 @@ Working within the scope of time (4 days) there was a lot more which I had wishe
 ## Important Links
 
 - [Character Creation Tool API Repo](https://github.com/brinecr/Character-Creation-Tool-API)
-- [Deployed API](TBD)
-- [Deployed Client](TBD)
+- [Deployed API](https://character-creation-tool.herokuapp.com/)
+- [Deployed Client](https://brinecr.github.io/Character-Creation-Tool-Client/#/)
 
 ## Planning Story
 
@@ -59,6 +59,8 @@ I see this project as the base of a game where you can take these characters and
 Originally I had wanted to implement a monster fighting simulator as the program I was going for - but had to adjust my scope during the process so I decided to make it into a character creation tool with what I had already built. The idea behind the monster fighting element I would have been able to battle characters against pre-defined monsters (and maybe even let players define some in the future).
 
 Taking these basic tools as a combat system I could also flesh out a world to have a character walk around - I like to think of the original Final Fantasy game as a lot of inspiration there as "what could be."
+
+On the front end I could always add more functionality, in the future, to interact with the back end. If we needed to show more statistics or have different parts of the project interact with each other. Also adding battle portions to have the characters fight monsters. There are so many little things I'd love to add to this project as gaming is a hobby of mine.
 
 ## Images
 

@@ -58,22 +58,22 @@ export const healCharacter = (characterid, user, name, description) => {
 }
 
 // Hurt Character
-export const hurtCharacter = (characterid, user, name, description) => {
-  return axios({
-    url: apiUrl + 'characters/' + characterid + '/',
-    method: 'PATCH',
-    headers: {
-      'Authorization': `Token ${user.token}`
-    },
-    data: {
-      character: {
-        hit_points: 9,
-        name: name,
-        description: description
-      }
-    }
-  })
-}
+// export const hurtCharacter = (characterid, user, name, description) => {
+//   return axios({
+//     url: apiUrl + 'characters/' + characterid + '/',
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': `Token ${user.token}`
+//     },
+//     data: {
+//       character: {
+//         hit_points: 9,
+//         name: name,
+//         description: description
+//       }
+//     }
+//   })
+// }
 
 // Kill Character
 export const killCharacter = (characterid, user, name, description) => {
