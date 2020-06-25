@@ -21,10 +21,10 @@ class ViewCharacter extends Component {
     [event.target.name]: event.target.value
   })
 
-  routeChange = event => {
-    const { history } = this.props
-    history.push('/battle')
-  }
+  // routeChange = event => {
+  //   const { history } = this.props
+  //   history.push('/battle')
+  // }
 
   onDeleteCharacter = event => {
     const { msgAlert, user } = this.props
@@ -130,6 +130,26 @@ class ViewCharacter extends Component {
 
   render () {
     const { characters } = this.state
+    console.log(characters)
+    if (characters.length === 0) {
+      return (
+        <div className="row view-characters">
+          <div className="mx-auto mt-5">
+            <CardDeck>
+              <Card style={{ width: '20rem' }}>
+                <Card.Img variant="top" src="https://cdn141.picsart.com/238451794076202.jpg?type=webp&to=min&r=640" />
+                <Card.Body>
+                  <Card.Title><h3>Create A Character!</h3></Card.Title>
+                  <Card.Text>
+                    Nothing to see here, move along...
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </CardDeck>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="row view-characters">
         <div className="mx-auto mt-5">

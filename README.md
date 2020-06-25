@@ -82,3 +82,18 @@ On the front end I could always add more functionality, in the future, to intera
 ![](public/mfs-pick-a-character.png)
 ![](public/mfs-character-graveyard.png)
 ![](public/mfs-battle.png)
+
+### Set Up and Installation Instructions
+
+Please see API instructions as well - both the back end API and Front End application need to be loaded and running for the front end to work.
+
+If you choose to fork/clone this repo please follow these instructions to make sure it is working correctly:
+1. Fork the Repository
+2. Clone the Repository
+3. Open up your terminal and navigate to the location where you would like to clone the respository
+4. Type "git clone" then copy/paste the link you received from cloning and press enter. This should install the cloned repository.
+5. Enter into the repository by typing "CD Character-Creation-Tool-Client" and pressing enter.
+6. Once inside the correct folder, type "npm install" to install the required modules.
+7. At this point you can create a new branch if you would like or continue on the master branch.
+8. Type "npm run start" to load an instance of the application locally.
+9. This should load automatically otherwise you can go to http://localhost:7165/ to pull it up at any time while the server is running.
