@@ -154,24 +154,26 @@ class ViewCharacter extends Component {
                   <Card.Text>
                     Monsters Killed: {character.monsters_killed}
                   </Card.Text>
-                  <Button
-                    className="col-4"
-                    variant="dark"
-                    id={character.id}
-                    name={character.name}
-                    data={character.description}
-                    onClick={this.onKillCharacter}>
-                    Kill
-                  </Button>
-                  <Button
-                    className="col-4"
-                    variant="light"
-                    id={character.id}
-                    name={character.name}
-                    data={character.description}
-                    onClick={this.onHealCharacter}>
-                    Heal
-                  </Button>
+                  {character.dead
+                    ? <Button
+                      className="col-4"
+                      variant="light"
+                      id={character.id}
+                      name={character.name}
+                      data={character.description}
+                      onClick={this.onHealCharacter}>
+                      Heal
+                    </Button>
+                    : <Button
+                      className="col-4"
+                      variant="dark"
+                      id={character.id}
+                      name={character.name}
+                      data={character.description}
+                      onClick={this.onKillCharacter}>
+                      Kill
+                    </Button>
+                  }
                   <Button
                     className="col-4"
                     id={character.id}

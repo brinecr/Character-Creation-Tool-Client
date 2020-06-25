@@ -1,12 +1,14 @@
-# Monster Fighting Simulator Client
+# Character Creation Tool Client
 
-This is the capstone project of my time at General Assembly. I wanted to push myself and really make use of all of the different tools that we had been taught. This is why I am incorporating a React front-end built with Javascript to a Django back-end built with Python.
+This is the capstone project of my time at General Assembly. I wanted to push myself and really make use of all of the different tools that we had been taught. This is why I am incorporating a React front-end built with Javascript to a Django back-end built with Python (which incorporating those two together was a lot harder than I had initially realized).
 
-I wanted to create an application which I would want to enjoy about be able to show to friends and have them enjoy as well. This is why I decided to go with a monster fighting simulator - as every RPG fan knows the fighting section is an important part of any dungeon crawling adventure.
+This project is a simple character creation tool that also tracks if a character is alive or dead, and can revive them if they are dead. I wanted to create an application which I would want to use and be able to show to friends and have them enjoy it.
+
+Working within the scope of time (4 days) there was a lot more which I had wished to accomplish and still may in later iterations of the project. Originally (and you will see in ERD/Wireframes below) I had wanted to flesh a full Monster Fighting Simulator. While this did not fully come to fruition the foundation is there to build from in the future.
 
 ## Important Links
 
-- [Monster Fighting Simulator API Repo](https://github.com/brinecr/Monster-Fighting-Simulator-API)
+- [Character Creation Tool API Repo](https://github.com/brinecr/Monster-Fighting-Simulator-API)
 - [Deployed API](TBD)
 - [Deployed Client](TBD)
 
@@ -52,7 +54,11 @@ I then put together a tentative schedule
 
 ### Unsolved Problems
 
-TBD
+I see this project as the base of a game where you can take these characters and their statistics and then do more with them.
+
+Originally I had wanted to implement a monster fighting simulator as the program I was going for - but had to adjust my scope during the process so I decided to make it into a character creation tool with what I had already built. The idea behind the monster fighting element I would have been able to battle characters against pre-defined monsters (and maybe even let players define some in the future).
+
+Taking these basic tools as a combat system I could also flesh out a world to have a character walk around - I like to think of the original Final Fantasy game as a lot of inspiration there as "what could be."
 
 ## Images
 
