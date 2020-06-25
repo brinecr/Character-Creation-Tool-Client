@@ -73,7 +73,7 @@ On the front end I could always add more functionality, in the future, to intera
 
 ### ERD (entity relationship diagram)
 
-![](public/Monster_Fighter_Simulator_ERD.png)
+![](public/Monster_Fighter_Simulator_ERD.jpg)
 
 #### Wireframe:
 ![](public/mfs-landing-page.png)
