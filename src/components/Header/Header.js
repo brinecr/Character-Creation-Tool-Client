@@ -38,12 +38,12 @@ const Header = ({ user, msgAlert, setUser }) => (
           height="30"
           margin-right="10"
           className="d-inline-block align-top"
-        /> Monster Fighting Simulator</div>
+        /> Character Creation Tool</div>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        <Nav.Link>{ user && <span className="navbar-text mr-2">Welcome to the THUNDERDOME, {user.email}!</span>}</Nav.Link>
+        <Nav.Link>{ user && <span className="navbar-text mr-2">Welcome, {user.email}!</span>}</Nav.Link>
         { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
         { !user && <AutoSignIn msgAlerts={msgAlert} setUser={setUser} />}

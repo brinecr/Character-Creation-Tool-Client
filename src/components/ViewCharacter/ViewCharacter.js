@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { deleteCharacter, healCharacter, getCharacters } from '../../api/character'
+import { deleteCharacter, healCharacter, hurtCharacter, killCharacter, getCharacters } from '../../api/character'
 import messages from '../AutoDismissAlert/messages'
 
 import Button from 'react-bootstrap/Button'
@@ -50,42 +50,92 @@ class ViewCharacter extends Component {
     const id = event.target.id
     const description = event.target.getAttribute('data')
     const name = event.target.name
-    console.log(event.target)
-    console.log(description)
-    console.log(name)
     healCharacter(id, user, name, description)
       .then(() => msgAlert({
-        heading: 'Revive Character Success!',
+        heading: 'Heal Character Success!',
         message: messages.reviveCharacterSuccess,
         variant: 'success'
       }))
       .then(() => this.componentDidMount())
       .catch(error => {
         msgAlert({
-          heading: 'Revive Character Failed with error: ' + error.message,
+          heading: 'Heal Character Failed with error: ' + error.message,
           message: messages.reviveCharacterFailure,
           variant: 'danger'
         })
       })
   }
 
+  onHurtCharacter = event => {
+    const { msgAlert, user } = this.props
+    const id = event.target.id
+    const description = event.target.getAttribute('data')
+    const name = event.target.name
+    hurtCharacter(id, user, name, description)
+      .then(() => msgAlert({
+        heading: 'Hurt Character Success!',
+        message: messages.hurtCharacterSuccess,
+        variant: 'success'
+      }))
+      .then(() => this.componentDidMount())
+      .catch(error => {
+        msgAlert({
+          heading: 'Hurt Character Failed with error: ' + error.message,
+          message: messages.hurtCharacterFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
+  onKillCharacter = event => {
+    const { msgAlert, user } = this.props
+    const id = event.target.id
+    const description = event.target.getAttribute('data')
+    const name = event.target.name
+    killCharacter(id, user, name, description)
+      .then(() => msgAlert({
+        heading: 'Kill Character Success!',
+        message: messages.killCharacterSuccess,
+        variant: 'success'
+      }))
+      .then(() => this.componentDidMount())
+      .catch(error => {
+        msgAlert({
+          heading: 'Kill Character Failed with error: ' + error.message,
+          message: messages.killCharacterFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
   componentDidMount () {
+    const { msgAlert } = this.props
     getCharacters(this.props.user)
       .then(res => {
-        console.log(res)
         this.setState({ characters: res.data })
       })
-      .catch(console.error)
+      // .then(() => msgAlert({
+      //   heading: 'View Characters Success!',
+      //   message: messages.viewCharacterSuccess,
+      //   variant: 'info'
+      // }))
+      .catch(error => {
+        msgAlert({
+          heading: 'View Characters Failed with error: ' + error.message,
+          message: messages.viewCharacterFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   render () {
     const { characters } = this.state
     return (
       <div className="row view-characters">
-        <div>
+        <div className="mx-auto mt-5">
           <CardDeck>
             {characters.map(character => (
-              <Card className="mt-5" key={character.id} style={{ width: '20rem' }}>
+              <Card key={character.id} style={{ width: '20rem' }}>
                 <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV9qLv1OHDZJAPiLr8xlODxlOpYfdL1_cDliZsWCKymxFDFuXo&usqp=CAU" />
                 <Card.Body>
                   <Card.Title><h3>{character.name}</h3></Card.Title>
@@ -107,8 +157,11 @@ class ViewCharacter extends Component {
                   <Button
                     className="col-4"
                     variant="dark"
-                    onClick={this.routeChange}>
-                    Battle
+                    id={character.id}
+                    name={character.name}
+                    data={character.description}
+                    onClick={this.onKillCharacter}>
+                    Kill
                   </Button>
                   <Button
                     className="col-4"
@@ -126,6 +179,7 @@ class ViewCharacter extends Component {
                     onClick={this.onDeleteCharacter}>
                     Delete
                   </Button>
+
                 </Card.Body>
               </Card>
             ))}

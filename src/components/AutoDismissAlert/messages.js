@@ -10,6 +10,12 @@ export default {
   createCharacterFailure: 'Failed to create character. Please verify name chosen is not already in use.',
   deleteCharacterSuccess: 'Character deleted successfully!',
   deleteCharacterFailure: 'Failed to delete character.',
-  reviveCharacterSuccess: 'Character healed successfully! Character is now set back to 10 Hit Points and is no longer dead if they were!',
-  reviveCharacterFailure: 'Failed to revive character.'
+  reviveCharacterSuccess: 'Character healed successfully! Character is now set back to 10 Hit Points and is no longer dead!',
+  reviveCharacterFailure: 'Failed to revive character.',
+  hurtCharacterSuccess: 'Character hurt successfully!',
+  hurtCharacterFailure: 'Failed to hurt character.',
+  viewCharacterSuccess: 'Characters loaded successfully!',
+  viewCharacterFailure: 'Failed to load characters.',
+  killCharacterSuccess: 'Character killed successfully!',
+  killCharacterFailure: 'Failed to kill character.'
 }

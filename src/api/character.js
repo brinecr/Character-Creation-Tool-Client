@@ -57,6 +57,43 @@ export const healCharacter = (characterid, user, name, description) => {
   })
 }
 
+// Hurt Character
+export const hurtCharacter = (characterid, user, name, description) => {
+  return axios({
+    url: apiUrl + 'characters/' + characterid + '/',
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data: {
+      character: {
+        hit_points: 9,
+        name: name,
+        description: description
+      }
+    }
+  })
+}
+
+// Kill Character
+export const killCharacter = (characterid, user, name, description) => {
+  return axios({
+    url: apiUrl + 'characters/' + characterid + '/',
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data: {
+      character: {
+        hit_points: 0,
+        dead: true,
+        name: name,
+        description: description
+      }
+    }
+  })
+}
+
 // Delete Character
 export const deleteCharacter = (characterid, user) => {
   return axios({
@@ -80,9 +117,9 @@ export const getCharacters = user => {
 }
 
 // Get Character
-export const getCharacter = (character, user) => {
+export const getCharacter = (characterid, user) => {
   return axios({
-    url: apiUrl + 'characters/' + character._id,
+    url: apiUrl + 'characters/' + characterid + '/',
     method: 'GET',
     headers: {
       'Authorization': `Token ${user.token}`
