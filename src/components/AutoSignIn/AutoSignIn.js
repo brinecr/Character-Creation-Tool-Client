@@ -28,7 +28,7 @@ class AutoSignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/view-character'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlerts({
