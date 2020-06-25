@@ -8,7 +8,7 @@ Working within the scope of time (4 days) there was a lot more which I had wishe
 
 ## Important Links
 
-- [Character Creation Tool API Repo](https://github.com/brinecr/Monster-Fighting-Simulator-API)
+- [Character Creation Tool API Repo](https://github.com/brinecr/Character-Creation-Tool-API)
 - [Deployed API](TBD)
 - [Deployed Client](TBD)
 

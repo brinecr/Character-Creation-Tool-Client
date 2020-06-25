@@ -1,6 +1,6 @@
 {
-  "name": "Monster-Fighting-Simulator",
-  "homepage": "https://brinecr.github.io/Monster-Fighting-Simulator-Client",
+  "name": "Character-Creation-Tool",
+  "homepage": "https://brinecr.github.io/Character-Creation-Tool-Client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
