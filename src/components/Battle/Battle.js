@@ -52,9 +52,6 @@ class Battle extends Component {
     const id = event.target.id
     const description = event.target.getAttribute('data')
     const name = event.target.name
-    console.log(event.target)
-    console.log(description)
-    console.log(name)
     healCharacter(id, user, name, description)
       .then(() => msgAlert({
         heading: 'Revive Character Success!',

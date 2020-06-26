@@ -130,7 +130,6 @@ class ViewCharacter extends Component {
 
   render () {
     const { characters } = this.state
-    console.log(characters)
     if (characters.length === 0) {
       return (
         <div className="row view-characters">
